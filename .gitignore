@@ -18,3 +18,5 @@ bin
 out
 *.idea
 *.iml
+
+hidden
