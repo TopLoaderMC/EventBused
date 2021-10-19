@@ -1,5 +1,7 @@
 Event Bus(ed)
----
+=============
+![Latest release version badge](https://img.shields.io/maven-metadata/v?color=forestgreen&label=release&metadataUrl=https%3A%2F%2Fmaven.socketmods.dev%2Frepository%2Ftoploader%2Fcom%2Fgithub%2Ftoploadermc%2Feventbused%2Feventbus-core%2Fmaven-metadata.xml)
+![Latest snapshot version badge](https://img.shields.io/maven-metadata/v?color=tomato&label=snapshot&metadataUrl=https%3A%2F%2Fmaven.socketmods.dev%2Frepository%2Ftoploader%2Fcom%2Fgithub%2Ftoploadermc%2Feventbused%2Feventbus-core%2Fmaven-metadata.xml&versionSuffix=-SNAPSHOT)
 
 A Slower* Implementation of https://github.com/MinecraftForge/EventBus
 
