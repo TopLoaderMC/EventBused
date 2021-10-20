@@ -18,6 +18,7 @@
  */
 package com.github.toploadermc.eventbus.core.bus;
 
+import com.github.toploadermc.eventbus.core.validators.RegistrationValidators;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -117,8 +118,8 @@ public interface EventBus {
     }
 
     default <T> void addListener(EventPriority priority, boolean receiveCancelled, Class<T> eventClass, Consumer<T> listener) {
-        if (Config.CHECK_NON_GENERIC_REGISTERS && Types.isGeneric(eventClass))
-            throw new IllegalArgumentException("Cannot register a generic event listener with addListener, use addGenericListener");
+        if (Config.VALIDATE_ON_REGISTER)
+            RegistrationValidators.get().forEach(it -> it.validate(eventClass));
 
         addListener(priority, Filters.passCancelled(receiveCancelled), eventClass, listener);
     }

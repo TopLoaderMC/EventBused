@@ -26,6 +26,8 @@ public class Config {
 
     public static boolean NAMED_LISTENERS             = Property.of("eventbus.nameListeners", "false");
 
+    public static boolean VALIDATE_ON_REGISTER        = Property.of("eventbus.validateOnRegister", "true");
+
     public static boolean CHECK_TYPE_ON_REGISTER      = Property.of("eventbus.checkTypesOnRegister", "true");
     public static boolean CHECK_TYPE_ON_DISPATCH      = Property.of("eventbus.checkTypesOnDispatch", "false");
 

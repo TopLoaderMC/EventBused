@@ -18,14 +18,13 @@
  */
 package com.github.toploadermc.eventbus.core.util;
 
+import com.github.toploadermc.eventbus.core.event.Generic;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
-import com.github.toploadermc.eventbus.core.event.Generic;
 
 public class Types {
 

@@ -67,9 +67,9 @@ public class TypedEventBusTest extends AbstractTest {
         TypedEventBus bus = TypedEventBus.of(bus());
         AtomicInteger called = new AtomicInteger(0);
 
-        bus.addGenericListener(List.class, (GenericEvent<List> event) -> called.getAndIncrement());
+        bus.addGenericListener(List.class, (GenericEvent<List<Boolean>> event) -> called.getAndIncrement());
 
-        bus.post(new GenericEvent<>((Class<List<String>>) (Object) List.class));
+        bus.post(new GenericEvent<>((Class<List<String>>) (Class<?>) List.class));
         assertEquals(1, called.get());
 
         bus.post(new GenericEvent<>(String.class));

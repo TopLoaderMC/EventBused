@@ -18,18 +18,16 @@
  */
 package com.github.toploadermc.eventbus.core.listener;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.reflect.Method;
-import java.lang.reflect.Type;
-import java.util.function.Predicate;
-
-import com.github.toploadermc.eventbus.core.event.Generic;
 import com.github.toploadermc.eventbus.core.event.SubscribeEvent;
+import com.github.toploadermc.eventbus.core.filters.EventFilter;
+import com.github.toploadermc.eventbus.core.filters.EventFilters;
 import com.github.toploadermc.eventbus.core.util.Filters;
 import com.github.toploadermc.eventbus.core.util.Methods;
 import com.github.toploadermc.eventbus.core.util.Sneaky;
-import com.github.toploadermc.eventbus.core.util.Types;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.reflect.Method;
+import java.util.function.Predicate;
 
 public class InvokingEventListener implements EventListener {
 
@@ -47,10 +45,8 @@ public class InvokingEventListener implements EventListener {
         this.readable = "Invoking: " + target + " " + method.getName() + Methods.asType(method).toMethodDescriptorString();
 
         Predicate<Object> filter = Filters.passCancelled(annotation.receiveCanceled());
-
-        if (Generic.class.isAssignableFrom(eventType)) {
-            Type genericFilter = Types.generateFilter(method.getGenericParameterTypes()[0]);
-            filter = filter.and(it -> it instanceof Generic<?> && ((Generic<?>) it).getGenericType() == genericFilter);
+        for (EventFilter filters : EventFilters.get()) {
+            filter = filters.apply(filter, eventType, target, method, annotation);
         }
 
         this.filter = filter;
