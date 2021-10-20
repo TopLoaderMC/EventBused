@@ -20,10 +20,10 @@ package com.github.toploadermc.eventbus.generic.bus;
 
 import java.util.function.Consumer;
 
-import com.github.toploadermc.eventbus.core.Config;
 import com.github.toploadermc.eventbus.core.bus.DelegatingEventBus;
 import com.github.toploadermc.eventbus.core.bus.EventBus;
 import com.github.toploadermc.eventbus.core.event.EventPriority;
+import com.github.toploadermc.eventbus.generic.GenericConfig;
 import com.github.toploadermc.eventbus.generic.event.Generic;
 import com.github.toploadermc.eventbus.generic.util.Filters;
 import com.github.toploadermc.eventbus.generic.util.Types;
@@ -52,7 +52,7 @@ public class GenericEventBus extends DelegatingEventBus {
     }
 
     public <T extends Generic<? extends F>, F> void addGenericListener(EventPriority priority, boolean receiveCancelled, Class<T> eventClass, Class<F> genericFilter, Consumer<T> listener) {
-        if (Config.CHECK_GENERIC_REGISTERS && !Types.isGeneric(eventClass))
+        if (GenericConfig.CHECK_GENERIC_REGISTERS && !Types.isGeneric(eventClass))
             throw new IllegalArgumentException("Cannot register a non generic event listener with addGenericListener, use addListener");
 
         addListener(priority, Filters.passGenericFilter(genericFilter).and(Filters.passCancelled(receiveCancelled)), eventClass, listener);

@@ -35,7 +35,7 @@ public class GenericEventBusTest extends AbstractTest {
         GenericEventBus bus = GenericEventBus.of(bus());
         bus.addGenericListener(GenericEvent.class, List.class, this::handleGenericEvent);
 
-        bus.post(new GenericEvent<>((Class<List<String>>) (Object) List.class));
+        bus.post(new GenericEvent<>((Class<List<String>>) (Class<?>) List.class));
 
         Assertions.assertTrue(genericEventHandled);
     }
@@ -46,7 +46,7 @@ public class GenericEventBusTest extends AbstractTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> bus.addListener(GenericEvent.class, this::handleGenericEvent));
     }
 
-    private void handleGenericEvent(GenericEvent<List<String>> evt) {
+    private void handleGenericEvent(GenericEvent<List<Boolean>> evt) {
         genericEventHandled = true;
     }
 

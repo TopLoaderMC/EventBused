@@ -31,7 +31,4 @@ public class Config {
     public static boolean CHECK_TYPE_ON_REGISTER      = Property.of("eventbus.checkTypesOnRegister", "true");
     public static boolean CHECK_TYPE_ON_DISPATCH      = Property.of("eventbus.checkTypesOnDispatch", "false");
 
-    public static boolean CHECK_GENERIC_REGISTERS     = Property.of("eventbus.checkIsGenericOnRegister", "true");
-    public static boolean CHECK_NON_GENERIC_REGISTERS = Property.of("eventbus.checkIsNonGenericOnRegister", "true");
-
 }
