@@ -22,7 +22,7 @@ import com.github.toploadermc.eventbus.core.event.SubscribeEvent;
 import java.lang.reflect.Method;
 import java.util.function.Predicate;
 
-public interface EventFilter {
+public interface EventFilter { //TODO: Additional Support for EventBus#addListener
 
     Predicate<Object> apply(Predicate<Object> current, Class<?> eventType, Object target, Method method, SubscribeEvent annotation);
 

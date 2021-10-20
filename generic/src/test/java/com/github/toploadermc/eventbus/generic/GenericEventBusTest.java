@@ -16,13 +16,13 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-package com.github.toploadermc.eventbus.core.generic;
+package com.github.toploadermc.eventbus.generic;
 
 import java.util.List;
 
 import com.github.toploadermc.eventbus.core.AbstractTest;
-import com.github.toploadermc.eventbus.core.bus.generic.GenericEventBus;
-import com.github.toploadermc.eventbus.core.events.GenericEvent;
+import com.github.toploadermc.eventbus.generic.bus.GenericEventBus;
+import com.github.toploadermc.eventbus.generic.events.GenericEvent;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

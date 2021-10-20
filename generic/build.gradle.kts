@@ -2,23 +2,12 @@
 //    id("me.champeau.jmh") version "0.6.5"
 //}
 
-repositories {
-    maven("https://maven.minecraftforge.net/") {
-        name = "forge"
-        mavenContent {
-            includeGroup("net.jodah")
-        }
-    }
-}
-
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 
 dependencies {
-    api(project(":generic"))
-    api("net.jodah:typetools:0.8.3")
+    api(project(":core"))
 
     testImplementation(project(":core").dependencyProject.sourceSets.test.get().output)
-    testImplementation(project(":generic").dependencyProject.sourceSets.test.get().output)
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.+")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.+")
 }
@@ -43,11 +32,11 @@ tasks.test {
 //tasks.jmh.get().outputs.upToDateWhen { false }
 
 publishing {
-    publications.create<MavenPublication>("typed") {
+    publications.create<MavenPublication>("generic") {
         from(project.components.findByName("java"))
         pom {
-            name.set("EventBused - Typed")
-            description.set("Provides TypeTool related niceties for EventBused")
+            name.set("EventBused - Generic")
+            description.set("Provides Generic Events for EventBused")
         }
     }
 }

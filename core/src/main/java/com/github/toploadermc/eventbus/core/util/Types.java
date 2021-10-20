@@ -18,7 +18,6 @@
  */
 package com.github.toploadermc.eventbus.core.util;
 
-import com.github.toploadermc.eventbus.core.event.Generic;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
@@ -30,10 +29,6 @@ public class Types {
 
     public static boolean isBaseType(Class<?> clazz) {
         return clazz == Object.class || clazz.getSuperclass() == null;
-    }
-
-    public static boolean isGeneric(Class<?> clazz) {
-        return Generic.class.isAssignableFrom(clazz);
     }
 
     public static Set<Class<?>> linked(final Class<?> clazz) {

@@ -16,10 +16,11 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-package com.github.toploadermc.eventbus.core.filters;
+package com.github.toploadermc.eventbus.generic.filters;
 
-import com.github.toploadermc.eventbus.core.event.Generic;
+import com.github.toploadermc.eventbus.generic.event.Generic;
 import com.github.toploadermc.eventbus.core.event.SubscribeEvent;
+import com.github.toploadermc.eventbus.core.filters.TypedChainFilter;
 import com.github.toploadermc.eventbus.core.util.Types;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;

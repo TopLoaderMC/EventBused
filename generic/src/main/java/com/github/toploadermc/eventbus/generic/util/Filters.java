@@ -16,17 +16,15 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-package com.github.toploadermc.eventbus.core.event;
+package com.github.toploadermc.eventbus.generic.util;
 
-import java.lang.reflect.Type;
+import com.github.toploadermc.eventbus.generic.event.Generic;
+import java.util.function.Predicate;
 
-/**
- * Marks a generic event - one that is able to be filtered based on the supplied Generic type
- *
- * @param <T> The filtering type
- */
-public interface Generic<T> extends Event {
+public class Filters extends com.github.toploadermc.eventbus.core.util.Filters {
 
-    Type getGenericType();
+    public static <T extends Generic<? extends F>, F> Predicate<T> passGenericFilter(Class<F> type) {
+        return e -> e.getGenericType() == type;
+    }
 
 }

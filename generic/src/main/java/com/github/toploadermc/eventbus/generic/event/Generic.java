@@ -16,22 +16,18 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-package com.github.toploadermc.eventbus.core.util;
+package com.github.toploadermc.eventbus.generic.event;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-import java.util.function.Predicate;
+import com.github.toploadermc.eventbus.core.event.Event;
+import java.lang.reflect.Type;
 
-import com.github.toploadermc.eventbus.core.event.Cancellable;
+/**
+ * Marks a generic event - one that is able to be filtered based on the supplied Generic type
+ *
+ * @param <T> The filtering type
+ */
+public interface Generic<T> extends Event {
 
-public class Filters {
-
-    public static <T> Predicate<T> passCancelled(boolean receiveCancelled) {
-        return e -> receiveCancelled || !(e instanceof Cancellable) || !((Cancellable) e).isCancelled();
-    }
-
-    public static Predicate<Method> hasAnnotation(Class<? extends Annotation> annotation) {
-        return m -> m.isAnnotationPresent(annotation);
-    }
+    Type getGenericType();
 
 }

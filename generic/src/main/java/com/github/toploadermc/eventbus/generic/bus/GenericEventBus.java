@@ -16,7 +16,7 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-package com.github.toploadermc.eventbus.core.bus.generic;
+package com.github.toploadermc.eventbus.generic.bus;
 
 import java.util.function.Consumer;
 
@@ -24,9 +24,9 @@ import com.github.toploadermc.eventbus.core.Config;
 import com.github.toploadermc.eventbus.core.bus.DelegatingEventBus;
 import com.github.toploadermc.eventbus.core.bus.EventBus;
 import com.github.toploadermc.eventbus.core.event.EventPriority;
-import com.github.toploadermc.eventbus.core.event.Generic;
-import com.github.toploadermc.eventbus.core.util.Filters;
-import com.github.toploadermc.eventbus.core.util.Types;
+import com.github.toploadermc.eventbus.generic.event.Generic;
+import com.github.toploadermc.eventbus.generic.util.Filters;
+import com.github.toploadermc.eventbus.generic.util.Types;
 
 //TODO: Make Generic a separate artifact + generalise it to remove special casing for it
 public class GenericEventBus extends DelegatingEventBus {

@@ -10,4 +10,4 @@ pluginManagement {
 
 rootProject.name = "EventBused"
 
-include("core", "typed") //TODO: , "modlauncher-6")
+include("core", "generic", "typed") //TODO: , "modlauncher-6")

@@ -22,11 +22,11 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import com.github.toploadermc.eventbus.core.bus.EventBus;
-import com.github.toploadermc.eventbus.core.bus.generic.GenericEventBus;
+import com.github.toploadermc.eventbus.generic.bus.GenericEventBus;
 import com.github.toploadermc.eventbus.core.event.EventPriority;
-import com.github.toploadermc.eventbus.core.event.Generic;
+import com.github.toploadermc.eventbus.generic.event.Generic;
 import com.github.toploadermc.eventbus.core.listener.FilteringEventListener;
-import com.github.toploadermc.eventbus.core.util.Filters;
+import com.github.toploadermc.eventbus.generic.util.Filters;
 import com.github.toploadermc.eventbus.typed.util.Typed;
 
 public class TypedEventBus extends GenericEventBus {

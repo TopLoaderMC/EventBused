@@ -16,25 +16,14 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-package com.github.toploadermc.eventbus.core.events;
+package com.github.toploadermc.eventbus.generic.util;
 
-import java.lang.reflect.Type;
+import com.github.toploadermc.eventbus.generic.event.Generic;
 
-import com.github.toploadermc.eventbus.core.event.Generic;
+public class Types extends com.github.toploadermc.eventbus.core.util.Types {
 
-public class GenericEvent<T> implements Generic<T> {
-
-    private final Class<T> type;
-
-    public GenericEvent(Class<T> type)
-    {
-        this.type = type;
-    }
-
-    @Override
-    public Type getGenericType()
-    {
-        return type;
+    public static boolean isGeneric(Class<?> clazz) {
+        return Generic.class.isAssignableFrom(clazz);
     }
 
 }

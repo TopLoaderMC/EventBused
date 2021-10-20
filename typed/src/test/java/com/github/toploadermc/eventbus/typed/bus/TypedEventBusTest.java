@@ -23,8 +23,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import com.github.toploadermc.eventbus.core.AbstractTest;
 import com.github.toploadermc.eventbus.core.events.BasicEvent;
-import com.github.toploadermc.eventbus.core.events.GenericEvent;
 import com.github.toploadermc.eventbus.core.events.OtherEvent;
+import com.github.toploadermc.eventbus.generic.events.GenericEvent;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

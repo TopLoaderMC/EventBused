@@ -16,16 +16,25 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-package com.github.toploadermc.eventbus.core.validators;
+package com.github.toploadermc.eventbus.generic.events;
 
-import com.github.toploadermc.eventbus.core.Config;
-import com.github.toploadermc.eventbus.core.util.Types;
+import java.lang.reflect.Type;
 
-public class GenericValidator implements RegistrationValidator {
+import com.github.toploadermc.eventbus.generic.event.Generic;
 
-    @Override public void validate(Class<?> eventClass) throws IllegalArgumentException {
-        if (Config.CHECK_NON_GENERIC_REGISTERS && Types.isGeneric(eventClass))
-            throw new IllegalArgumentException("Cannot register a generic event listener with addListener, use addGenericListener");
+public class GenericEvent<T> implements Generic<T> {
+
+    private final Class<T> type;
+
+    public GenericEvent(Class<T> type)
+    {
+        this.type = type;
+    }
+
+    @Override
+    public Type getGenericType()
+    {
+        return type;
     }
 
 }
