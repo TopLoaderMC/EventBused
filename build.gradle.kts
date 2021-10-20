@@ -17,7 +17,7 @@ subprojects {
         repository         = "https://maven.socketmods.dev/repository/toploader/"
         repositoryUsername - providers.env("TopLoaderUsername")
         repositoryPassword - providers.env("TopLoaderPassword")
-        githubRepo         - "TopLoaderMC/EventBus"
+        githubRepo         - "TopLoaderMC/EventBused"
     }
 
     group = rootProject.group
