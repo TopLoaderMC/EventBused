@@ -14,10 +14,10 @@ repositories {
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 
 dependencies {
-    api(project(":eventbus-core"))
+    api(project(":core"))
     api("net.jodah:typetools:0.8.3")
 
-    testImplementation(project(":eventbus-core").dependencyProject.sourceSets.test.get().output)
+    testImplementation(project(":core").dependencyProject.sourceSets.test.get().output)
     testImplementation("org.powermock:powermock-core:2.0.+")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.+")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.+")

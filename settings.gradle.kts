@@ -10,4 +10,4 @@ pluginManagement {
 
 rootProject.name = "EventBused"
 
-include("eventbus-core", "eventbus-typed") //TODO: , "eventbus-modlauncher-6")
+include("core", "typed") //TODO: , "modlauncher-6")
