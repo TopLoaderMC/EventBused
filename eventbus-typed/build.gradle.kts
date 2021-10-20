@@ -5,6 +5,9 @@
 repositories {
     maven("https://maven.minecraftforge.net/") {
         name = "forge"
+        mavenContent {
+            includeGroup("net.jodah")
+        }
     }
 }
 

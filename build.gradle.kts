@@ -22,6 +22,10 @@ subprojects {
 
     group = rootProject.group
 
+    repositories {
+        mavenCentral()
+    }
+
     tasks.jar {
         manifest {
             attributes(
@@ -51,8 +55,8 @@ subprojects {
             pom {
                 licenses {
                     license {
-                        name.set("LGPLv2.1")
-                        url.set("https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt")
+                        name - "LGPLv2.1"
+                        url - "https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt"
                     }
                 }
             }

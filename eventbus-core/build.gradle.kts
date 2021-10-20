@@ -2,12 +2,6 @@ plugins {
     id("me.champeau.jmh") version "0.6.5"
 }
 
-repositories {
-    maven("https://maven.minecraftforge.net/") {
-        name = "forge"
-    }
-}
-
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 
 dependencies {
