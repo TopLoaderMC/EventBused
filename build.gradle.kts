@@ -26,6 +26,11 @@ subprojects {
         mavenCentral()
     }
 
+    java {
+        withSourcesJar()
+        withJavadocJar()
+    }
+
     tasks.jar {
         manifest {
             attributes(
@@ -79,8 +84,3 @@ var org.parchmentmc.writtenbooks.WrittenBooksExtension.repository
 fun ProviderFactory.env(key: String) = this.environmentVariable(key).forUseAtConfigurationTime()
 operator fun <T> Property<T>.minus(value: T) = this.set(value)
 operator fun <T> Property<T>.minus(value: Provider<T>) = this.set(value)
-
-fun MavenPomDeveloperSpec.developer(author: String) = developer {
-    id - author
-    name - author
-}
