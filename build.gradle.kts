@@ -47,7 +47,6 @@ subprojects {
 
     license {
         header = rootProject.file("LICENSE-Header")
-        ext["year"] = "2016-2021"
         mapping("java", "SLASHSTAR_STYLE")
 
         include("**/*.java")
