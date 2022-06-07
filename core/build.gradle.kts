@@ -2,7 +2,7 @@ plugins {
     id("me.champeau.jmh") version "0.6.5"
 }
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 
 dependencies {
     api("org.checkerframework:checker-qual:3.17.0")
