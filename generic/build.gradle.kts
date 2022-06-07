@@ -8,8 +8,8 @@ dependencies {
     api(project(":core"))
 
     testImplementation(project(":core").dependencyProject.sourceSets.test.get().output)
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.+")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.+")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.+")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.+")
 }
 
 tasks.test {

@@ -5,12 +5,12 @@ plugins {
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 
 dependencies {
-    api("org.checkerframework:checker-qual:3.17.0")
-    api("org.slf4j:slf4j-api:1.7.32")
+    api("org.checkerframework:checker-qual:3.21.4")
+    api("org.slf4j:slf4j-api:1.7.36")
 
-    testImplementation("org.slf4j:slf4j-log4j12:1.7.32")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.+")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.+")
+    testImplementation("org.slf4j:slf4j-log4j12:1.7.36")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.+")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.+")
 }
 
 tasks.test {
