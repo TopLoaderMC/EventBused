@@ -34,8 +34,7 @@ public class ListenerList {
         resizeLists(maxSize);
     }
 
-    private synchronized static void extendMasterList(ListenerList inst)
-    {
+    private synchronized static void extendMasterList(ListenerList inst) {
         allLists.add(inst);
     }
 
@@ -167,8 +166,7 @@ public class ListenerList {
             return listeners.get();
         }
 
-        protected boolean shouldRebuild()
-        {
+        protected boolean shouldRebuild() {
             return rebuild;// || (parent != null && parent.shouldRebuild());
         }
 
