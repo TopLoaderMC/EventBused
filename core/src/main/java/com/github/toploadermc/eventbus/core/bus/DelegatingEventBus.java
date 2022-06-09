@@ -31,6 +31,11 @@ public class DelegatingEventBus implements EventBus {
         return bus.post(event);
     }
 
+    @Override
+    public <T> boolean post(EventToken<T> token, T event) {
+        return bus.post(token, event);
+    }
+
     @Override public void register(Object target) {
         bus.register(target);
     }

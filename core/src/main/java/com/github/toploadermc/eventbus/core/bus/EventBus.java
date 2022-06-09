@@ -56,6 +56,15 @@ public interface EventBus {
     boolean post(Object event);
 
     /**
+     * Submit the event for dispatch to appropriate listeners
+     *
+     * @param token The event token
+     * @param event The event to dispatch to listeners
+     * @return true if the event was {@link Cancellable} cancelled
+     */
+    <T> boolean post(EventToken<T> token, T event);
+
+    /**
      * Register an instance object or a Class, and add listeners for all {@link SubscribeEvent} annotated methods
      * found there.
      *

@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 
 import com.github.toploadermc.eventbus.core.bus.BusBuilder;
 import com.github.toploadermc.eventbus.core.bus.EventBus;
+import com.github.toploadermc.eventbus.core.bus.EventToken;
 import com.github.toploadermc.eventbus.core.event.Cancellable;
 import com.github.toploadermc.eventbus.core.event.EventPriority;
 import com.github.toploadermc.eventbus.core.event.SubscribeEvent;
@@ -140,10 +141,23 @@ public class StandardEventBus implements EventBus {
     @Override public boolean post(Object event) {
         if (!isActive) return false;
 
+        return post(listProvider.provide(event), event);
+    }
+
+    @Override public <T> boolean post(EventToken<T> token, T event) {
+        if (!isActive) return false;
+
+        if (token.getEventClass() != event.getClass())
+            throw new IllegalArgumentException("Cannot post event of type " + event.getClass().getSimpleName() + " via this event token. Must exactly match type: " + token.getEventClass().getSimpleName());
+
+        return post(token.get(), event);
+    }
+
+    private boolean post(ListenerList list, Object event) {
         if (Config.CHECK_TYPE_ON_DISPATCH && markerType != null && !markerType.isInstance(event))
             throw new IllegalArgumentException("Cannot post event of type " + event.getClass().getSimpleName() + " to this event. Must match type: " + markerType.getSimpleName());
 
-        EventListener[] listeners = listProvider.provide(event).getListeners(busID);
+        EventListener[] listeners = list.getListeners(busID);
 
         int index = 0;
         try {
