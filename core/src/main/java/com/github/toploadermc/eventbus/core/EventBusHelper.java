@@ -5,18 +5,14 @@
 package com.github.toploadermc.eventbus.core;
 
 import java.lang.reflect.Modifier;
-import java.util.IdentityHashMap;
 import java.util.Map;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.github.toploadermc.eventbus.core.util.Types;
 
 public class EventBusHelper {
 
-    private final static Map<Class<?>, ListenerList> listeners = new IdentityHashMap<>();
-    private static ReadWriteLock lock = new ReentrantReadWriteLock(true);
+    private final static Map<Class<?>, ListenerList> listeners = new ConcurrentHashMap<>();
 
     /**
      * Returns a {@link ListenerList} object that contains all listeners
@@ -31,31 +27,18 @@ public class EventBusHelper {
     }
 
     static ListenerList getListenerListInternal(Class<?> eventClass, boolean fromInstanceCall) {
-        Lock readLock = lock.readLock();
-
-        // to read the listener list, let's take the read lock
-        readLock.lock();
         ListenerList listenerList = listeners.get(eventClass);
-        readLock.unlock();
 
         // if there's no entry, we'll end up here
         if (listenerList == null) {
             // Let's pre-compute our new listener list value. This will possibly call parents' listener list
-            // evaluations. as such, we need to make sure we don't hold a lock when we do this, otherwise
-            // we could conflict with the class init global lock that is implicitly present
+            // evaluations.
             listenerList = computeListenerList(eventClass, fromInstanceCall);
-            // having computed a listener list, we'll grab the write lock.
-            // We'll also take the read lock, so we're very clear we have _both_ locks here.
-            Lock writeLock = lock.writeLock();
-            writeLock.lock();
-            readLock.lock();
+
             // insert our computed value if no existing value is present
             listeners.putIfAbsent(eventClass, listenerList);
             // get whatever value got stored in the list
             listenerList = listeners.get(eventClass);
-            // and unlock, and we're done
-            readLock.unlock();
-            writeLock.unlock();
         }
 
         return listenerList;
@@ -77,7 +60,6 @@ public class EventBusHelper {
 
     private static void clearAll() {
         listeners.clear();
-        lock = new ReentrantReadWriteLock(true);
     }
 
 }
